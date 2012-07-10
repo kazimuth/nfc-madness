@@ -1,0 +1,10 @@
+July 9: 
+*Got new machine up and running
+*Cobbled together an app to recieve the android.nfc.action.TECH_DISCOVERED intent (for android.nfc.tech.NfcA and android.nfc.tech.MifareClassic)
+*Made app scan the tag information that came with the intent, print that out
+*Made app attempt to authenticate with each of the 16 sectors on the tag with one key (000000), trying to match it to key a and/or b on the card (didn't work)
+
+July 10:
+*Tried some other methos from the MifareClassic class, they all need to have authentication first
+*Tried some other keys, no luck
+

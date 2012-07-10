@@ -59,24 +59,37 @@ public class TagNotify extends Activity {
     	}
     	
     	public void run(){
-    		byte[] key = {0, 0, 0, 0, 0, 0};
+    		//byte[] key = {0, 0, 0, 0, 0, 0};
+    		//byte[] key = MifareClassic.KEY_DEFAULT;
+    		byte[] key = {-1, -1, -1, -1, -1, -1};
     		try{
     		mifare.connect();
     		
     		for(int i = 0; i < mifare.getSectorCount(); i++){
     			if(mifare.authenticateSectorWithKeyA(i, key)){
-    				displayMessage += "\nAuthenticated with sector "+i+" with key A=000000";
-    			}else if(mifare.authenticateSectorWithKeyB(i, key)){
-    				displayMessage += "\nAuthenticated with sector "+i+" with key B=000000";
-    			}else{
+    				displayMessage += "\nAuthenticated with sector "+i+" with key A=0xffffffffffff";
+    			}
+    			else if(mifare.authenticateSectorWithKeyB(i, key)){
+    				displayMessage += "\nAuthenticated with sector "+i+" with key B=0xffffffffffff";
+    			}
+    			else{
     				displayMessage += "\nCould not authenticate with sector "+i;
     			}
-    			out.setText(displayMessage);
     		}
+    		
+    		displayMessage += "\nAttempting to read blocks...";
+    			for(int i = 0; i < 64; i++){
+    			byte[] contents = mifare.readBlock(i);
+    			displayMessage += "\nBlock "+i+" sent "+contents;
+    		}
+    		
+    		out.setText(displayMessage);
+    		Log.d("TagNotify", displayMessage);
     		mifare.close();
     		}catch(Exception e){
-    			displayMessage+="\nOperation cancelled.";
+    			displayMessage+="\nOperation failed.";
     			out.setText(displayMessage);
+    			Log.d("TagNotify", displayMessage);
     			return;
     		}
     	}
