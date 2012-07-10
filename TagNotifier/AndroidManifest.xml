@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tagnotifier"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="14" />
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".TagNotify"
+            android:label="@string/title_activity_tag_notify" >
+            <intent-filter>
+				<action android:name="android.nfc.action.TECH_DISCOVERED" />
+				<action android:name="android.nfc.action.TAG_DISCOVERED" />
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" 
+                android:resource="@xml/nfc_tech"/>
+        </activity>
+    </application>
+
+</manifest>

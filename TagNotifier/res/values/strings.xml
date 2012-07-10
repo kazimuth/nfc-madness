@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">TagNotifier</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_tag_notify">TagNotify</string>
+    <string name="discovery">NFC tag discovered!</string>
+    <string name="ellipsis">...</string>
+
+</resources>
