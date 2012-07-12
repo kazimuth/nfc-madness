@@ -5,14 +5,6 @@ July 9:
 *Made app attempt to authenticate with each of the 16 sectors on the tag with one key (000000), trying to match it to key a and/or b on the card (didn't work)
 
 July 10:
-*Tried some other methods from the MifareClassic class, they all need to have authentication first
+*Tried some other methos from the MifareClassic class, they all need to have authentication first
 *Tried some other keys, no luck
 *Made app output to LogCat as well as screen
-
-July 11:
-*Research
-
-July 12:
-*Added shell class to receive intent in foreground
-*Teleconferenced to show off basic functionality
-*Can't do much more with NFC until I can authenticate
